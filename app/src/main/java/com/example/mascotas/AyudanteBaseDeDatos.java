@@ -19,7 +19,7 @@ public class AyudanteBaseDeDatos extends SQLiteOpenHelper {
                 "CREATE TABLE IF NOT EXISTS " + TABLA_MASCOTAS + " (" +
                         "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                         "nombre TEXT," +
-                        "edad INT" +
+                        "edad INT, " + "peso REAL" +
                         ")"
         );
     }

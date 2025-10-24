@@ -40,6 +40,7 @@ public class AdaptadorMascotas extends RecyclerView.Adapter<AdaptadorMascotas.VH
         Mascota m = lista.get(pos);
         h.tvNombre.setText(m.getNombre());
         h.tvEdad.setText("Edad: " + m.getEdad());
+        h.tvPeso.setText("Peso: " + m.getPeso());
     }
 
     @Override
@@ -48,11 +49,12 @@ public class AdaptadorMascotas extends RecyclerView.Adapter<AdaptadorMascotas.VH
     }
 
     static class VH extends RecyclerView.ViewHolder {
-        TextView tvNombre, tvEdad;
+        TextView tvNombre, tvEdad, tvPeso;
         VH(View v) {
             super(v);
             tvNombre = v.findViewById(R.id.tvNombre);
             tvEdad = v.findViewById(R.id.tvEdad);
+            tvPeso = v.findViewById(R.id.tvPeso);
         }
     }
 }

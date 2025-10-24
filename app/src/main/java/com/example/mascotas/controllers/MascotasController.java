@@ -29,6 +29,7 @@ public class MascotasController {
         ContentValues valoresParaInsertar = new ContentValues();
         valoresParaInsertar.put("nombre", mascota.getNombre());
         valoresParaInsertar.put("edad", mascota.getEdad());
+        valoresParaInsertar.put("peso", mascota.getPeso());
         return baseDeDatos.insert(NOMBRE_TABLA, null, valoresParaInsertar);
     }
 
@@ -37,6 +38,7 @@ public class MascotasController {
         ContentValues valoresParaActualizar = new ContentValues();
         valoresParaActualizar.put("nombre", mascotaEditada.getNombre());
         valoresParaActualizar.put("edad", mascotaEditada.getEdad());
+        valoresParaActualizar.put("peso", mascotaEditada.getPeso());
         String campoParaActualizar = "id = ?";
         String[] argumentosParaActualizar = {String.valueOf(mascotaEditada.getId())};
         return baseDeDatos.update(NOMBRE_TABLA, valoresParaActualizar, campoParaActualizar, argumentosParaActualizar);
@@ -45,7 +47,7 @@ public class MascotasController {
     public ArrayList<Mascota> obtenerMascotas() {
         ArrayList<Mascota> mascotas = new ArrayList<>();
         SQLiteDatabase baseDeDatos = AyudanteBaseDeDatos.getReadableDatabase();
-        String[] columnasAConsultar = {"nombre", "edad", "id"};
+        String[] columnasAConsultar = {"nombre", "edad", "peso", "id"};
         Cursor cursor = baseDeDatos.query(
                 NOMBRE_TABLA,
                 columnasAConsultar,
@@ -68,8 +70,9 @@ public class MascotasController {
 
             String nombreObtenidoDeBD = cursor.getString(0);
             int edadObtenidaDeBD = cursor.getInt(1);
-            long idMascota = cursor.getLong(2);
-            Mascota mascotaObtenidaDeBD = new Mascota(nombreObtenidoDeBD, edadObtenidaDeBD, idMascota);
+            double pespObtenidoDeBD = cursor.getDouble(2);
+            long idMascota = cursor.getLong(3);
+            Mascota mascotaObtenidaDeBD = new Mascota(nombreObtenidoDeBD, edadObtenidaDeBD, pespObtenidoDeBD,idMascota);
             mascotas.add(mascotaObtenidaDeBD);
         } while (cursor.moveToNext());
 

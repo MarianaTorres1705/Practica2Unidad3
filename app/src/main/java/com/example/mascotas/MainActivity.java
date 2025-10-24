@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("idMascota", m.getId());
                 i.putExtra("nombreMascota", m.getNombre());
                 i.putExtra("edadMascota", m.getEdad());
+                i.putExtra("pesoMascota", m.getPeso());
                 startActivity(i);
             }
             @Override public void onLongClick(View view, int position) {
